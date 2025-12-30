@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TAGIR - Превращаю хаос в структуру через ИИ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>TAGIR ThinkTech - AI Twin для специалистов 2026</title>
     <style>
         * {
             margin: 0;
@@ -13,991 +12,801 @@
         }
 
         :root {
-            /* Light theme colors */
-            --bg-primary: #FFFFFF;
-            --bg-secondary: #F8FAFF;
-            --bg-alt: #F0F4FF;
-            --text-primary: #1F2937;
-            --text-secondary: #6B7280;
-            --blue-primary: #2563EB;
-            --blue-light: #3B82F6;
-            --orange-cta: #FF6B35;
-            --orange-hover: #FF8C42;
-            --shadow: rgba(0, 0, 0, 0.08);
-            --border: rgba(0, 0, 0, 0.1);
+            --primary: #2186B0;
+            --primary-dark: #1A6A8F;
+            --navy: #1A3C5C;
+            --navy-light: #2A5A7C;
+            --accent: #FFD700;
+            --white: #FFFFFF;
+            --bg-dark: #0F1F2E;
+            --text-light: #E8EEF5;
+            --text-muted: #A8B5C4;
+            --gradient-1: linear-gradient(135deg, #2186B0 0%, #1A3C5C 100%);
+            --gradient-2: linear-gradient(135deg, #1A6A8F 0%, #0F1F2E 100%);
+            --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        .container {
-            max-width: 1200px;
+        /* ========== HEADER ========== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(15, 31, 46, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(33, 134, 176, 0.2);
+            padding: 1rem 2rem;
+        }
+
+        nav {
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .section {
-            padding: 80px 0;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .section-light {
-            background: var(--bg-secondary);
-        }
-
-        .section-alt {
-            background: var(--bg-alt);
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
+        .logo {
             display: flex;
             align-items: center;
-            background: var(--bg-primary);
-            padding: 120px 0;
+            gap: 0.75rem;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--white);
+            text-decoration: none;
         }
 
-        .hero-content {
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
+        .logo img {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
         }
 
-        .hero-title {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 2rem;
-            color: var(--blue-primary);
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            color: var(--text-primary);
-            margin-bottom: 1.5rem;
-            font-weight: 500;
-        }
-
-        .hero-tag {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--blue-primary), var(--blue-light));
-            color: white;
-            padding: 12px 24px;
-            border-radius: 50px;
-            font-weight: 600;
-            margin-bottom: 3rem;
-            font-size: 1.1rem;
-        }
-
-        .cta-buttons {
+        .nav-links {
             display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
+            gap: 2rem;
+            list-style: none;
         }
 
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 16px 32px;
-            border-radius: 50px;
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s var(--ease);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s var(--ease);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
+            transition: all 0.3s var(--ease);
+            border: none;
             cursor: pointer;
         }
 
-        .btn-primary {
-            background: var(--orange-cta);
-            color: white;
-            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+        .cta-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(33, 134, 176, 0.3);
         }
 
-        .btn-primary:hover {
-            background: var(--orange-hover);
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(255, 107, 53, 0.4);
+        /* ========== HERO SECTION ========== */
+        .hero {
+            margin-top: 80px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient-2);
+            position: relative;
+            overflow: hidden;
         }
 
-        .btn-secondary {
-            background: transparent;
-            color: var(--blue-primary);
-            border: 2px solid var(--blue-primary);
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(33, 134, 176, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 15s ease-in-out infinite;
         }
 
-        .btn-secondary:hover {
-            background: var(--blue-primary);
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(33, 134, 176, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s ease-in-out infinite reverse;
         }
 
-        /* Section Titles */
-        .section-title {
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 700;
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(30px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
             text-align: center;
-            margin-bottom: 1rem;
-            color: var(--blue-primary);
+            padding: 2rem;
         }
 
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            margin-bottom: 4rem;
-            max-width: 800px;
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            font-weight: 800;
+        }
+
+        .hero-highlight {
+            background: linear-gradient(135deg, var(--primary) 0%, #FFD700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        /* Cards */
-        .card-grid {
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            border: 2px solid var(--primary);
+            transition: all 0.3s var(--ease);
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(33, 134, 176, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            border: 2px solid var(--primary);
+            transition: all 0.3s var(--ease);
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* ========== FEATURES SECTION ========== */
+        .section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            text-align: center;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-top: 3rem;
+            margin-bottom: 3rem;
         }
 
-        .card {
-            background: var(--bg-primary);
+        .feature-card {
+            background: linear-gradient(135deg, rgba(33, 134, 176, 0.1) 0%, rgba(42, 90, 124, 0.05) 100%);
+            border: 1px solid rgba(33, 134, 176, 0.2);
+            border-radius: 12px;
             padding: 2rem;
-            border-radius: 16px;
-            box-shadow: 0 4px 6px var(--shadow);
-            border: 1px solid rgba(37, 99, 235, 0.1);
-            transition: all 0.3s ease;
+            transition: all 0.4s var(--ease);
             position: relative;
+            overflow: hidden;
         }
 
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.15);
-            border-color: var(--blue-light);
-        }
-
-        .card-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        .card-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .card-text {
-            color: var(--text-secondary);
-            line-height: 1.5;
-        }
-
-        /* Virtual Team Cards */
-        .virtual-team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .virtual-card {
-            background: var(--bg-alt);
-            padding: 2.5rem;
-            border-radius: 16px;
-            box-shadow: 0 4px 6px var(--shadow);
-            border: 1px solid var(--blue-primary);
-            transition: all 0.3s ease;
-        }
-
-        .virtual-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.2);
-        }
-
-        .virtual-card .card-icon {
-            color: var(--blue-primary);
-            font-size: 3rem;
-        }
-
-        .virtual-card .card-title {
-            font-size: 1.4rem;
-            color: var(--blue-primary);
-        }
-
-        /* Bottom Message */
-        .bottom-message {
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(255, 107, 53, 0.1));
-            padding: 2.5rem;
-            border-radius: 16px;
-            margin-top: 3rem;
-            text-align: center;
-            border: 2px solid var(--blue-primary);
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        /* Three Pillars */
-        .pillars-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-            margin-top: 4rem;
-        }
-
-        .pillar-card {
-            background: var(--bg-primary);
-            padding: 3rem 2rem;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 8px 15px var(--shadow);
-            border: 1px solid var(--blue-primary);
-            transition: all 0.4s ease;
-        }
-
-        .pillar-card:hover {
-            transform: translateY(-12px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.2);
-        }
-
-        .pillar-icon {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            color: var(--blue-primary);
-        }
-
-        .pillar-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: var(--blue-primary);
-        }
-
-        .pillar-list {
-            list-style: none;
-            text-align: left;
-        }
-
-        .pillar-list li {
-            padding: 0.5rem 0;
-            color: var(--text-secondary);
-            position: relative;
-            padding-left: 1.5rem;
-        }
-
-        .pillar-list li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--blue-primary);
-            font-weight: bold;
-        }
-
-        /* Workflow Timeline */
-        .workflow-timeline {
-            position: relative;
-            margin-top: 4rem;
-        }
-
-        .workflow-timeline::before {
+        .feature-card::before {
             content: '';
             position: absolute;
-            left: 50%;
             top: 0;
-            bottom: 0;
-            width: 4px;
-            background: linear-gradient(180deg, var(--blue-primary), var(--blue-light));
-            transform: translateX(-50%);
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(33, 134, 176, 0.1), transparent);
+            transition: left 0.6s var(--ease);
         }
 
-        .workflow-step {
-            display: flex;
-            align-items: center;
-            margin-bottom: 4rem;
-            position: relative;
+        .feature-card:hover::before {
+            left: 100%;
         }
 
-        .workflow-step:nth-child(even) {
-            flex-direction: row-reverse;
+        .feature-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-8px);
+            box-shadow: 0 16px 48px rgba(33, 134, 176, 0.2);
         }
 
-        .step-number {
-            background: var(--blue-primary);
-            color: white;
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--gradient-1);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 2rem;
-            font-weight: 700;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 2;
-            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+            margin-bottom: 1.5rem;
         }
 
-        .step-content {
-            background: var(--bg-primary);
-            padding: 2rem;
-            border-radius: 16px;
-            box-shadow: 0 8px 20px var(--shadow);
-            border: 1px solid var(--blue-primary);
-            width: 45%;
-        }
-
-        .step-content h3 {
-            font-size: 1.4rem;
+        .feature-card h3 {
+            font-size: 1.3rem;
             margin-bottom: 1rem;
-            color: var(--blue-primary);
+            font-weight: 700;
         }
 
-        .step-content p {
-            color: var(--text-secondary);
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
 
-        /* Results Grid */
-        .results-grid {
+        /* ========== ECOSYSTEM SECTION ========== */
+        .ecosystem {
+            background: var(--gradient-2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ecosystem::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(33, 134, 176, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .ecosystem-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .ecosystem-steps {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
 
-        .result-card {
-            background: var(--bg-primary);
-            padding: 2.5rem 1.5rem;
-            border-radius: 16px;
+        .step {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(33, 134, 176, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
             text-align: center;
-            box-shadow: 0 4px 6px var(--shadow);
-            border: 1px solid var(--blue-primary);
-            transition: all 0.3s ease;
-        }
-
-        .result-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.15);
-        }
-
-        .result-metric {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--blue-primary);
-            margin-bottom: 1rem;
-        }
-
-        .result-text {
-            color: var(--text-secondary);
-            line-height: 1.4;
-        }
-
-        /* Pricing */
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-            margin-top: 4rem;
-        }
-
-        .pricing-card {
-            background: var(--bg-alt);
-            padding: 3rem 2rem;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 8px 15px var(--shadow);
-            border: 2px solid var(--blue-primary);
-            transition: all 0.3s ease;
+            transition: all 0.3s var(--ease);
             position: relative;
         }
 
-        .pricing-card::before {
-            content: '';
+        .step:hover {
+            background: rgba(33, 134, 176, 0.15);
+            border-color: var(--primary);
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .step h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .step p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* ========== PRICING SECTION ========== */
+        .pricing {
+            background: var(--bg-dark);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            border: 2px solid rgba(33, 134, 176, 0.2);
+            border-radius: 12px;
+            padding: 2.5rem;
+            transition: all 0.4s var(--ease);
+            background: linear-gradient(135deg, rgba(33, 134, 176, 0.05) 0%, transparent 100%);
+            position: relative;
+        }
+
+        .pricing-card.popular {
+            border-color: var(--primary);
+            background: linear-gradient(135deg, rgba(33, 134, 176, 0.15) 0%, transparent 100%);
+            transform: scale(1.05);
+        }
+
+        .pricing-card.popular::before {
+            content: 'ПОПУЛЯРНО';
             position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            height: 6px;
-            background: linear-gradient(90deg, var(--blue-primary), var(--orange-cta));
-            border-radius: 20px 20px 0 0;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 700;
         }
 
         .pricing-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 25px 45px rgba(37, 99, 235, 0.2);
+            border-color: var(--primary);
+            transform: translateY(-8px);
         }
 
-        .pricing-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .pricing-duration {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            font-style: italic;
-        }
-
-        .pricing-price {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--blue-primary);
+        .pricing-card h3 {
+            font-size: 1.5rem;
             margin-bottom: 0.5rem;
+            font-weight: 700;
         }
 
-        .pricing-period {
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
+        .pricing-card .price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 1.5rem 0;
+        }
+
+        .pricing-card .price span {
+            font-size: 1rem;
+            color: var(--text-muted);
         }
 
         .pricing-features {
             list-style: none;
-            margin-bottom: 3rem;
-            text-align: left;
+            margin: 2rem 0;
         }
 
         .pricing-features li {
-            padding: 0.5rem 0;
-            color: var(--text-secondary);
-            position: relative;
-            padding-left: 1.5rem;
+            padding: 0.75rem 0;
+            color: var(--text-muted);
+            border-bottom: 1px solid rgba(33, 134, 176, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
         }
 
         .pricing-features li::before {
             content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--blue-primary);
-            font-weight: bold;
-        }
-
-        /* Advantages */
-        .advantages-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .advantage-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            padding: 1.5rem;
-            background: var(--bg-primary);
-            border-radius: 12px;
-            box-shadow: 0 2px 4px var(--shadow);
-            border: 1px solid var(--blue-primary);
-            transition: all 0.3s ease;
-        }
-
-        .advantage-item:hover {
-            transform: translateX(8px);
-            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.15);
-        }
-
-        .advantage-icon {
-            color: var(--blue-primary);
-            font-size: 1.5rem;
-            flex-shrink: 0;
-        }
-
-        .advantage-text {
-            color: var(--text-secondary);
-            line-height: 1.4;
-        }
-
-        /* Final CTA */
-        .final-cta {
-            text-align: center;
-            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-alt) 100%);
-            padding: 80px 20px;
-            border-radius: 32px;
-            margin: 4rem 0;
-            border: 2px solid var(--blue-primary);
-        }
-
-        .final-cta-title {
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            color: var(--primary);
             font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: var(--blue-primary);
+            font-size: 1.2rem;
         }
 
-        .final-cta-subtitle {
-            font-size: 1.3rem;
-            color: var(--text-primary);
-            margin-bottom: 3rem;
-        }
-
-        /* Footer */
-        .footer {
+        /* ========== CTA SECTION ========== */
+        .cta-section {
+            background: var(--gradient-1);
+            border-radius: 16px;
+            padding: 4rem 2rem;
             text-align: center;
-            padding: 3rem 0;
-            border-top: 1px solid var(--border);
-            color: var(--text-secondary);
-            background: var(--bg-secondary);
+            margin: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
         }
 
-        .contact-info {
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .cta-section p {
+            font-size: 1.15rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 10;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: var(--navy);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: var(--text-muted);
+        }
+
+        footer p {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
             display: flex;
             justify-content: center;
             gap: 2rem;
-            margin-bottom: 2rem;
             flex-wrap: wrap;
+            margin-top: 1.5rem;
         }
 
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .contact-item a {
-            color: var(--blue-primary);
+        .footer-links a {
+            color: var(--primary);
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: color 0.3s var(--ease);
         }
 
-        .contact-item a:hover {
-            color: var(--blue-light);
+        .footer-links a:hover {
+            color: var(--white);
         }
 
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 15px;
-            }
-            
-            .section {
-                padding: 60px 0;
-            }
-            
-            .hero {
-                min-height: 80vh;
-                padding: 80px 0;
-            }
-            
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn {
-                width: 100%;
-                max-width: 300px;
-            }
-            
-            .workflow-timeline::before {
-                left: 20px;
-            }
-            
-            .step-number {
-                left: 20px;
-                transform: translateX(-50%);
-            }
-            
-            .step-content {
-                width: calc(100% - 60px);
-                margin-left: 60px;
-            }
-            
-            .workflow-step:nth-child(even) {
-                flex-direction: row;
-            }
-            
-            .workflow-step:nth-child(even) .step-content {
-                margin-left: 60px;
-            }
-        }
-
-        /* Animation Classes */
-        .fade-in {
+        /* ========== SCROLL ANIMATION ========== */
+        .scroll-reveal {
             opacity: 0;
             transform: translateY(30px);
-            transition: all 0.6s ease;
+            transition: all 0.6s var(--ease);
         }
 
-        .fade-in.visible {
+        .scroll-reveal.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        .slide-in-left {
-            opacity: 0;
-            transform: translateX(-50px);
-            transition: all 0.6s ease;
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+                width: 100%;
+            }
+
+            .hero {
+                margin-top: 120px;
+            }
+
+            .section {
+                padding: 4rem 1.5rem;
+            }
+
+            .pricing-card.popular {
+                transform: scale(1);
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+            }
         }
 
-        .slide-in-left.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
+        /* ========== SMOOTH SCROLL ========== */
+        @media (prefers-reduced-motion: no-preference) {
+            ::-webkit-scrollbar {
+                width: 10px;
+            }
 
-        .slide-in-right {
-            opacity: 0;
-            transform: translateX(50px);
-            transition: all 0.6s ease;
-        }
+            ::-webkit-scrollbar-track {
+                background: var(--bg-dark);
+            }
 
-        .slide-in-right.visible {
-            opacity: 1;
-            transform: translateX(0);
+            ::-webkit-scrollbar-thumb {
+                background: var(--primary);
+                border-radius: 5px;
+            }
+
+            ::-webkit-scrollbar-thumb:hover {
+                background: var(--primary-dark);
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Hero Section -->
-    <section class="section hero visible">
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">Превращаю хаос в структуру и даю конкурентное преимущество</h1>
-                <p class="hero-subtitle">Помогаю предпринимателям внедрить искусственный интеллект без стресса и потери времени</p>
-                <div class="hero-tag">Комплексный подход: психология + организация + технологии</div>
-                <div class="cta-buttons">
-                    <a href="https://t.me/TagirFeo" class="btn btn-primary" target="_blank">📱 Записаться на диагностику</a>
-                    <a href="tel:+79786508626" class="btn btn-secondary">☎️ Позвонить</a>
-                </div>
+
+    <!-- ========== HEADER ========== -->
+    <header>
+        <nav>
+            <a href="#" class="logo">
+                <img src="logo.jpg" alt="TAGIR ThinkTech">
+                TAGIR
+            </a>
+            <ul class="nav-links">
+                <li><a href="#features">Возможности</a></li>
+                <li><a href="#ecosystem">Экосистема</a></li>
+                <li><a href="#pricing">Цены</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+            <button class="cta-button">Начать</button>
+        </nav>
+    </header>
+
+    <!-- ========== HERO SECTION ========== -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Создайте <span class="hero-highlight">цифрового двойника</span> своего мышления</h1>
+            <p>AI Twin — ваш личный ассистент, который думает как вы, работает 24/7 и масштабирует вашу экспертизу. Готовы к 2026?</p>
+            <div class="hero-buttons">
+                <button class="btn-primary">Запустить пилот</button>
+                <button class="btn-secondary">Смотреть видео</button>
             </div>
         </div>
     </section>
 
-    <!-- Pain Points Section -->
-    <section class="section section-light">
-        <div class="container">
-            <h2 class="section-title">Узнаёте себя?</h2>
-            <div class="card-grid">
-                <div class="card fade-in">
-                    <span class="card-icon">😫</span>
-                    <div class="card-text">Рутинные процессы съедают весь запал и энергию</div>
-                </div>
-                <div class="card fade-in">
-                    <span class="card-icon">📁</span>
-                    <div class="card-text">Информационный хаос — не знаете, куда сохранять информацию</div>
-                </div>
-                <div class="card fade-in">
-                    <span class="card-icon">💸</span>
-                    <div class="card-text">Нет денег на найм специалистов: маркетолога, бухгалтера, дизайнера</div>
-                </div>
-                <div class="card fade-in">
-                    <span class="card-icon">🔄</span>
-                    <div class="card-text">Замылился взгляд на бизнес — ходите по кругу</div>
-                </div>
-                <div class="card fade-in">
-                    <span class="card-icon">💡</span>
-                    <div class="card-text">Не видите новых возможностей и идей для развития</div>
-                </div>
-                <div class="card fade-in">
-                    <span class="card-icon">😰</span>
-                    <div class="card-text">Боитесь внедрять новые технологии</div>
-                </div>
-                <div class="card fade-in">
-                    <span class="card-icon">❓</span>
-                    <div class="card-text">Не понимаете, с чего начать работу с ИИ</div>
-                </div>
+    <!-- ========== FEATURES SECTION ========== -->
+    <section id="features" class="section">
+        <h2 class="section-title">Как работает AI Twin</h2>
+        <p class="section-subtitle">От архива знаний к живому двойнику вашей экспертизы</p>
+        
+        <div class="features-grid">
+            <div class="feature-card scroll-reveal">
+                <div class="feature-icon">🧠</div>
+                <h3>Извлечение контекста</h3>
+                <p>Анализируем ваши видео, статьи, интервью и вытаскиваем глубинные смыслы — не просто слова, а архитектуру вашего мышления.</p>
+            </div>
+
+            <div class="feature-card scroll-reveal">
+                <div class="feature-icon">🎯</div>
+                <h3>Психологический портрет</h3>
+                <p>Строим карту ваших принципов, фреймворков и стиля общения. Twin понимает, как вы принимаете решения и решаете задачи.</p>
+            </div>
+
+            <div class="feature-card scroll-reveal">
+                <div class="feature-icon">⚙️</div>
+                <h3>Синтез в агента</h3>
+                <p>Интегрируем портрет в мощный AI-агент. Twin готов к диалогу, не копирует ответы, а рассуждает из вашего центра масс.</p>
+            </div>
+
+            <div class="feature-card scroll-reveal">
+                <div class="feature-icon">🌙</div>
+                <h3>Работа 24/7</h3>
+                <p>Twin отвечает на вопросы ночью, квалифицирует клиентов, фильтрует рутину. Вы экономите 20+ часов в неделю.</p>
+            </div>
+
+            <div class="feature-card scroll-reveal">
+                <div class="feature-icon">📈</div>
+                <h3>Масштабирование</h3>
+                <p>Один Twin может обслуживать сотни клиентов. Ваша экспертиза становится продуктом, а не услугой.</p>
+            </div>
+
+            <div class="feature-card scroll-reveal">
+                <div class="feature-icon">🔄</div>
+                <h3>Непрерывное обучение</h3>
+                <p>Twin улучшается с каждым диалогом. Логируем вопросы, калибруем ответы, Twin становится всё умнее.</p>
             </div>
         </div>
     </section>
 
-    <!-- Virtual Team Section -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">ИИ как ваш виртуальный отдел</h2>
-            <p class="section-subtitle">Искусственный интеллект заменит целую команду специалистов, которых начинающий предприниматель не может себе позволить</p>
+    <!-- ========== ECOSYSTEM SECTION ========== -->
+    <section id="ecosystem" class="section ecosystem">
+        <div class="ecosystem-content">
+            <h2 class="section-title">Путь к AI Twin</h2>
+            <p class="section-subtitle">Четыре этапа трансформации вашей экспертизы в систему</p>
             
-            <div class="virtual-team-grid">
-                <div class="virtual-card fade-in">
-                    <span class="card-icon">🎯</span>
-                    <h3 class="card-title">Маркетолог</h3>
-                    <p class="card-text">ИИ создает контент-планы, пишет тексты для соцсетей, анализирует целевую аудиторию и разрабатывает рекламные кампании</p>
+            <div class="ecosystem-steps">
+                <div class="step scroll-reveal">
+                    <div class="step-number">1️⃣</div>
+                    <h3>Second Brain</h3>
+                    <p>Интенсив (4 дня)<br>Создаёте архитектуру своих знаний. Базис для Twin.</p>
                 </div>
-                
-                <div class="virtual-card fade-in">
-                    <span class="card-icon">📊</span>
-                    <h3 class="card-title">Бухгалтер</h3>
-                    <p class="card-text">ИИ помогает вести учет расходов, формировать отчеты, планировать бюджет и отслеживать финансовые показатели</p>
-                </div>
-                
-                <div class="virtual-card fade-in">
-                    <span class="card-icon">💡</span>
-                    <h3 class="card-title">Продуктовый аналитик</h3>
-                    <p class="card-text">ИИ исследует рынок, анализирует конкурентов, предлагает идеи для развития продукта и выявляет потребности клиентов</p>
-                </div>
-                
-                <div class="virtual-card fade-in">
-                    <span class="card-icon">📝</span>
-                    <h3 class="card-title">Копирайтер</h3>
-                    <p class="card-text">ИИ пишет продающие тексты, создает email-рассылки, готовит коммерческие предложения и скрипты для звонков</p>
-                </div>
-                
-                <div class="virtual-card fade-in">
-                    <span class="card-icon">🎨</span>
-                    <h3 class="card-title">Дизайнер</h3>
-                    <p class="card-text">ИИ генерирует идеи для визуала, создает прототипы, помогает с брендингом и оформлением материалов</p>
-                </div>
-                
-                <div class="virtual-card fade-in">
-                    <span class="card-icon">🤝</span>
-                    <h3 class="card-title">Бизнес-консультант</h3>
-                    <p class="card-text">ИИ дает свежий взгляд на ваш бизнес, предлагает новые возможности и идеи, которые вы могли не заметить</p>
-                </div>
-            </div>
-            
-            <div class="bottom-message fade-in">
-                Вы избавляетесь от рутинных процессов, которые съедают весь запал и энергию, и получаете профессиональный взгляд в каждом аспекте бизнеса
-            </div>
-        </div>
-    </section>
 
-    <!-- Three Pillars Section -->
-    <section class="section section-light">
-        <div class="container">
-            <h2 class="section-title">Три основы методики</h2>
-            <p class="section-subtitle">Моя методика — это не просто обучение</p>
-            
-            <div class="pillars-grid">
-                <div class="pillar-card slide-in-left">
-                    <span class="pillar-icon">🧠</span>
-                    <h3 class="pillar-title">Психологический</h3>
-                    <ul class="pillar-list">
-                        <li>Работа с сопротивлением</li>
-                        <li>Формирование mindset</li>
-                        <li>Снятие страхов</li>
-                        <li>Мотивация к изменениям</li>
-                    </ul>
+                <div class="step scroll-reveal">
+                    <div class="step-number">2️⃣</div>
+                    <h3>Портретирование</h3>
+                    <p>Консультация (8 часов)<br>Глубокий анализ вашего мышления через интервью и видео.</p>
                 </div>
-                
-                <div class="pillar-card fade-in">
-                    <span class="pillar-icon">📊</span>
-                    <h3 class="pillar-title">Организационный</h3>
-                    <ul class="pillar-list">
-                        <li>Система организации информации</li>
-                        <li>Цифровой двойник мышления</li>
-                        <li>Упорядочивание процессов</li>
-                        <li>Настройка бизнес-процессов</li>
-                        <li>KPI и метрики</li>
-                    </ul>
+
+                <div class="step scroll-reveal">
+                    <div class="step-number">3️⃣</div>
+                    <h3>Twin Creation</h3>
+                    <p>Разработка (3 недели)<br>Строим вашего цифрового двойника. Калибруем точность.</p>
                 </div>
-                
-                <div class="pillar-card slide-in-right">
-                    <span class="pillar-icon">🤖</span>
-                    <h3 class="pillar-title">Технологический</h3>
-                    <ul class="pillar-list">
-                        <li>ИИ-инструменты</li>
-                        <li>Perplexity, ChatGPT</li>
-                        <li>Автоматизация задач</li>
-                        <li>Интеграция в процессы</li>
-                    </ul>
+
+                <div class="step scroll-reveal">
+                    <div class="step-number">4️⃣</div>
+                    <h3>SaaS Subscription</h3>
+                    <p>Подписка (подневная)<br>Twin работает в Telegram, Slack, вашем сайте. Вы зарабатываете.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Workflow Section -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Как мы работаем</h2>
-            <p class="section-subtitle">Путь от хаоса к системе</p>
-            
-            <div class="workflow-timeline">
-                <div class="workflow-step">
-                    <div class="step-number">01</div>
-                    <div class="step-content">
-                        <h3>Диагностика</h3>
-                        <p>3 часа — выявляем проблемы и точки роста</p>
-                    </div>
-                </div>
-                
-                <div class="workflow-step">
-                    <div class="step-number">02</div>
-                    <div class="step-content">
-                        <h3>Организация</h3>
-                        <p>Внедряем систему управления информацией</p>
-                    </div>
-                </div>
-                
-                <div class="workflow-step">
-                    <div class="step-number">03</div>
-                    <div class="step-content">
-                        <h3>Обучение</h3>
-                        <p>Работаем с ИИ-инструментами</p>
-                    </div>
-                </div>
-                
-                <div class="workflow-step">
-                    <div class="step-number">04</div>
-                    <div class="step-content">
-                        <h3>Практика</h3>
-                        <p>Применяем на ваших реальных задачах</p>
-                    </div>
-                </div>
-                
-                <div class="workflow-step">
-                    <div class="step-number">05</div>
-                    <div class="step-content">
-                        <h3>Сопровождение</h3>
-                        <p>Поддержка и развитие системы</p>
-                    </div>
-                </div>
+    <!-- ========== PRICING SECTION ========== -->
+    <section id="pricing" class="section pricing">
+        <h2 class="section-title">Инвестиция в будущее</h2>
+        <p class="section-subtitle">Выберите формат, который вам подходит</p>
+
+        <div class="pricing-grid">
+            <div class="pricing-card scroll-reveal">
+                <h3>Starter</h3>
+                <div class="price">9,900<span>₽</span></div>
+                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Second Brain интенсив (4 дня)</p>
+                <ul class="pricing-features">
+                    <li>Архитектура знаний PARA</li>
+                    <li>Работа с ИИ</li>
+                    <li>Первые готовые шаблоны</li>
+                    <li>Дневная поддержка</li>
+                </ul>
+                <button class="btn-primary" style="width: 100%; margin-top: 1.5rem;">Записаться</button>
+            </div>
+
+            <div class="pricing-card popular scroll-reveal">
+                <h3>Pro</h3>
+                <div class="price">60,000<span>₽</span></div>
+                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Twin Creation Service</p>
+                <ul class="pricing-features">
+                    <li>Второй Brain + портретирование</li>
+                    <li>40 часов разработки Twin</li>
+                    <li>Первый месяц поддержки</li>
+                    <li>Калибровка точности</li>
+                    <li>Интеграция в 1 канал</li>
+                </ul>
+                <button class="btn-primary" style="width: 100%; margin-top: 1.5rem;">Заказать Twin</button>
+            </div>
+
+            <div class="pricing-card scroll-reveal">
+                <h3>Enterprise</h3>
+                <div class="price">120,000<span>₽</span></div>
+                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Full Package + Подписка</p>
+                <ul class="pricing-features">
+                    <li>Всё из Pro пакета</li>
+                    <li>60 часов разработки</li>
+                    <li>3 месяца поддержки</li>
+                    <li>Интеграция в 3+ канала</li>
+                    <li>Месячный аудит работы Twin</li>
+                </ul>
+                <button class="btn-primary" style="width: 100%; margin-top: 1.5rem;">Консультация</button>
             </div>
         </div>
     </section>
 
-    <!-- Results Section -->
-    <section class="section section-light">
-        <div class="container">
-            <h2 class="section-title">Что вы получите</h2>
-            
-            <div class="results-grid">
-                <div class="result-card fade-in">
-                    <div class="result-metric">30-50%</div>
-                    <p class="result-text">Экономия времени на рутинных задачах</p>
-                </div>
-                
-                <div class="result-card fade-in">
-                    <div class="result-metric">✓</div>
-                    <p class="result-text">Структурированная система управления информацией</p>
-                </div>
-                
-                <div class="result-card fade-in">
-                    <div class="result-metric">✓</div>
-                    <p class="result-text">Виртуальная команда специалистов через ИИ</p>
-                </div>
-                
-                <div class="result-card fade-in">
-                    <div class="result-metric">✓</div>
-                    <p class="result-text">Уверенность в работе с ИИ</p>
-                </div>
-                
-                <div class="result-card fade-in">
-                    <div class="result-metric">✓</div>
-                    <p class="result-text">Свежий взгляд и новые идеи для бизнеса</p>
-                </div>
-            </div>
-        </div>
+    <!-- ========== CTA SECTION ========== -->
+    <section id="contact" class="cta-section">
+        <h2>Готовы запустить своего Twin?</h2>
+        <p>Окно возможности: 6-12 месяцев до того, как это станет массовым. Начните сейчас — пока рынок молодой, а вы уникальны.</p>
+        <button class="btn-primary" style="background: var(--white); color: var(--primary); border-color: var(--white);">Записаться на консультацию</button>
     </section>
 
-    <!-- Pricing Section -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Начните прямо сейчас</h2>
-            
-            <div class="pricing-grid">
-                <div class="pricing-card slide-in-left">
-                    <h3 class="pricing-title">Диагностическая встреча</h3>
-                    <div class="pricing-duration">3 часа глубокого анализа</div>
-                    <div class="pricing-price">3 500 ₽</div>
-                    <ul class="pricing-features">
-                        <li>Выявление проблем</li>
-                        <li>План действий</li>
-                        <li>Первые рекомендации</li>
-                    </ul>
-                    <a href="https://t.me/TagirFeo" class="btn btn-primary" target="_blank">Записаться</a>
-                </div>
-                
-                <div class="pricing-card slide-in-right">
-                    <h3 class="pricing-title">Ежемесячное сопровождение</h3>
-                    <div class="pricing-price">15 000 ₽</div>
-                    <div class="pricing-period">в месяц</div>
-                    <ul class="pricing-features">
-                        <li>Регулярные консультации</li>
-                        <li>Практическое внедрение</li>
-                        <li>Индивидуальная поддержка</li>
-                        <li>Работа с вашими задачами</li>
-                    </ul>
-                    <a href="https://t.me/TagirFeo" class="btn btn-primary" target="_blank">Начать работу</a>
-                </div>
-            </div>
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <p>&copy; 2026 TAGIR ThinkTech. Архитекторы цифровой экспертизы.</p>
+        <div class="footer-links">
+            <a href="#">О нас</a>
+            <a href="#">Блог</a>
+            <a href="#">Документация</a>
+            <a href="#">Контакты</a>
+            <a href="#">Telegram</a>
         </div>
-    </section>
-
-    <!-- Why Me Section -->
-    <section class="section section-light">
-        <div class="container">
-            <h2 class="section-title">Почему я</h2>
-            
-            <div class="advantages-grid">
-                <div class="advantage-item fade-in">
-                    <span class="advantage-icon">✓</span>
-                    <p class="advantage-text">Не теория, а работа на ваших реальных задачах</p>
-                </div>
-                
-                <div class="advantage-item fade-in">
-                    <span class="advantage-icon">✓</span>
-                    <p class="advantage-text">Комплексный подход: психология + организация + технологии</p>
-                </div>
-                
-                <div class="advantage-item fade-in">
-                    <span class="advantage-icon">✓</span>
-                    <p class="advantage-text">Индивидуальное сопровождение</p>
-                </div>
-                
-                <div class="advantage-item fade-in">
-                    <span class="advantage-icon">✓</span>
-                    <p class="advantage-text">Результаты после первой встречи</p>
-                </div>
-                
-                <div class="advantage-item fade-in">
-                    <span class="advantage-icon">✓</span>
-                    <p class="advantage-text">Адаптация под специфику вашего бизнеса</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Final CTA Section -->
-    <section class="section">
-        <div class="container">
-            <div class="final-cta">
-                <h2 class="final-cta-title">Готовы навести порядок?</h2>
-                <p class="final-cta-subtitle">Первый шаг — диагностическая встреча</p>
-                <div class="cta-buttons">
-                    <a href="https://t.me/TagirFeo" class="btn btn-primary" target="_blank">Написать в Telegram</a>
-                    <a href="tel:+79786508626" class="btn btn-secondary">Позвонить</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="contact-info">
-                <div class="contact-item">
-                    <span>📱</span>
-                    <a href="https://t.me/TagirFeo" target="_blank">@TagirFeo</a>
-                </div>
-                <div class="contact-item">
-                    <span>📞</span>
-                    <a href="tel:+79786508626">+7 978 650 86 26</a>
-                </div>
-            </div>
-            <p>&copy; 2024 TAGIR. Эксперт по внедрению ИИ в бизнес.</p>
-        </div>
+        <p style="margin-top: 2rem; font-size: 0.9rem;">Second Brain • СОКРАТ • AI Twin — полная экосистема 2026</p>
     </footer>
 
+    <!-- ========== SCROLL ANIMATION SCRIPT ========== -->
     <script>
-        // Intersection Observer для анимаций
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -1011,56 +820,21 @@
             });
         }, observerOptions);
 
-        // Инициализация анимаций
-        document.addEventListener('DOMContentLoaded', () => {
-            const animatedElements = document.querySelectorAll('.section, .fade-in, .slide-in-left, .slide-in-right');
-            animatedElements.forEach(el => observer.observe(el));
+        document.querySelectorAll('.scroll-reveal').forEach(el => {
+            observer.observe(el);
+        });
 
-            // Плавный скролл для якорных ссылок
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-
-            // Hover эффекты для кнопок
-            document.querySelectorAll('.btn').forEach(btn => {
-                btn.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-3px) scale(1.05)';
-                });
-                
-                btn.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0) scale(1)';
-                });
-            });
-
-            // Дополнительные hover эффекты для карточек
-            document.querySelectorAll('.card, .virtual-card, .pillar-card, .result-card, .pricing-card').forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-8px) scale(1.02)';
-                });
-                
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0) scale(1)';
-                });
-            });
-
-            // Эффект параллакса для hero секции
-            window.addEventListener('scroll', () => {
-                const scrolled = window.pageYOffset;
-                const hero = document.querySelector('.hero');
-                if (hero && scrolled < hero.offsetHeight) {
-                    hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-                }
+        // Smooth button interactions
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                console.log('Button clicked:', this.textContent);
+                // Добавьте здесь интеграцию с формой или аналитикой
             });
         });
+
+        // Mobile menu toggle (если добавить потом)
+        console.log('TAGIR ThinkTech loaded');
     </script>
+
 </body>
 </html>
