@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAGIR ThinkTech - AI Twin для специалистов 2026</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2186B0;
+            --primary-dark: #1A6A8F;
+            --navy: #1A3C5C;
+            --navy-light: #2A5A7C;
+            --accent: #FFD700;
+            --white: #FFFFFF;
+            --bg-dark: #0F1F2E;
+            --text-light: #E8EEF5;
+            --text-muted: #A8B5C4;
+            --gradient-1: linear-gradient(135deg, #2186B0 0%, #1A3C5C 100%);
+            --gradient-2: linear-gradient(135deg, #1A6A8F 0%, #0F1F2E 100%);
+            --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ========== HEADER ========== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(15, 31, 46, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(33, 134, 176, 0.2);
+            padding: 1rem 2rem;
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .logo img {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s var(--ease);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s var(--ease);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s var(--ease);
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(33, 134, 176, 0.3);
+        }
+
+        /* ========== HERO SECTION ========== */
+        .hero {
+            margin-top: 80px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient-2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(33, 134, 176, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 15s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(33, 134, 176, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(30px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            font-weight: 800;
+        }
+
+        .hero-highlight {
+            background: linear-gradient(135deg, var(--primary) 0%, #FFD700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            border: 2px solid var(--primary);
+            transition: all 0.3s var(--ease);
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(33, 134, 176, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            border: 2px solid var(--primary);
+            transition: all 0.3s var(--ease);
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* ========== FEATURES SECTION ========== */
+        .section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            text-align: center;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, rgba(33, 134, 176, 0.1) 0%, rgba(42, 90, 124, 0.05) 100%);
+            border: 1px solid rgba(33, 134, 176, 0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.4s var(--ease);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(33, 134, 176, 0.1), transparent);
+            transition: left 0.6s var(--ease);
+        }
+
+        .feature-card:hover::before {
+            left: 100%;
+        }
+
+        .feature-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-8px);
+            box-shadow: 0 16px 48px rgba(33, 134, 176, 0.2);
+        }
+
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--gradient-1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ========== ECOSYSTEM SECTION ========== */
+        .ecosystem {
+            background: var(--gradient-2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ecosystem::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(33, 134, 176, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .ecosystem-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .ecosystem-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .step {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(33, 134, 176, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s var(--ease);
+            position: relative;
+        }
+
+        .step:hover {
+            background: rgba(33, 134, 176, 0.15);
+            border-color: var(--primary);
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .step h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .step p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* ========== PRICING SECTION ========== */
+        .pricing {
+            background: var(--bg-dark);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            border: 2px solid rgba(33, 134, 176, 0.2);
+            border-radius: 12px;
+            padding: 2.5rem;
+            transition: all 0.4s var(--ease);
+            background: linear-gradient(135deg, rgba(33, 134, 176, 0.05) 0%, transparent 100%);
+            position: relative;
+        }
+
+        .pricing-card.popular {
+            border-color: var(--primary);
+            background: linear-gradient(135deg, rgba(33, 134, 176, 0.15) 0%, transparent 100%);
+            transform: scale(1.05);
+        }
+
+        .pricing-card.popular::before {
+            content: 'ПОПУЛЯРНО';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .pricing-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-8px);
+        }
+
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .pricing-card .price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 1.5rem 0;
+        }
+
+        .pricing-card .price span {
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .pricing-features li {
+            padding: 0.75rem 0;
+            color: var(--text-muted);
+            border-bottom: 1px solid rgba(33, 134, 176, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        /* ========== CTA SECTION ========== */
+        .cta-section {
+            background: var(--gradient-1);
+            border-radius: 16px;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .cta-section p {
+            font-size: 1.15rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 10;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: var(--navy);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: var(--text-muted);
+        }
+
+        footer p {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.3s var(--ease);
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        /* ========== SCROLL ANIMATION ========== */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s var(--ease);
+        }
+
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+                width: 100%;
+            }
+
+            .hero {
+                margin-top: 120px;
+            }
+
+            .section {
+                padding: 4rem 1.5rem;
+            }
+
+            .pricing-card.popular {
+                transform: scale(1);
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+            }
+        }
+
+        /* ========== SMOOTH SCROLL ========== */
+        @media (prefers-reduced-motion: no-preference) {
+            ::-webkit-scrollbar {
+                width: 10px;
+            }
+
+            ::-webkit-scrollbar-track {
+                background: var(--bg-dark);
+            }
+
+            ::-webkit-scrollbar-thumb {
+                background: var(--primary);
+                border-radius: 5px;
+            }
+
+            ::-webkit-scrollbar-thumb:hover {
+                background: var(--primary-dark);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== HEADER ========== -->
+    <header>
+        <nav>
+            <a href="#" class="logo">
+                <img src="logo.jpg" alt="TAGIR ThinkTech">
+                TAGIR
+            </a>
+            <ul class="nav-links">
+                <li><a href="#features">Возможности</a></li>
+                <li><a href="#ecosystem">Экосистема</a></li>
+                <li><a href="#pricing">Цены</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+            <button class="cta-button">Начать</button>
+        </nav>
+    </header>
+
+    <!-- ========== HERO SECTION ========== -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Создайте <span class="hero-highlight">цифрового двойника</span> своего мышления</h1>
+            <p>AI Twin — ваш личный ассистент, который думает как вы, работает 24/7 и масштабирует вашу экспертизу. Готовы к 2026?</p>
+            <div class="hero-buttons">
+                <button class="btn-primary">Запустить пилот</button>
+                <button class="btn-secondary">Смотреть видео</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FEATURES SECTION ========== -->
+    <section id="features" class="section">
+        <h2 class="section-title">Как работает AI Twin</h2>
+        <p class="section-subtitle">От архива знаний к живому двойнику вашей экспертизы</p>
+        
+        <div class="features-grid">
+            <div class="feature-card scroll-reveal">
+                <div class="feature-icon">🧠</div>
+                <h3>Извлечение контекста</h3>
+                <p>Анализируем ваши видео, статьи, интервью и вытаскиваем глубинные смыслы — не просто слова, а архитектуру вашего мышления.</p>
+            </div>
+
+            <div class="feature-card scroll-reveal">
+                <div class="feature-icon">🎯</div>
+                <h3>Психологический портрет</h3>
+                <p>Строим карту ваших принципов, фреймворков и стиля общения. Twin понимает, как вы принимаете решения и решаете задачи.</p>
+            </div>
+
+            <div class="feature-card scroll-reveal">
+                <div class="feature-icon">⚙️</div>
+                <h3>Синтез в агента</h3>
+                <p>Интегрируем портрет в мощный AI-агент. Twin готов к диалогу, не копирует ответы, а рассуждает из вашего центра масс.</p>
+            </div>
+
+            <div class="feature-card scroll-reveal">
+                <div class="feature-icon">🌙</div>
+                <h3>Работа 24/7</h3>
+                <p>Twin отвечает на вопросы ночью, квалифицирует клиентов, фильтрует рутину. Вы экономите 20+ часов в неделю.</p>
+            </div>
+
+            <div class="feature-card scroll-reveal">
+                <div class="feature-icon">📈</div>
+                <h3>Масштабирование</h3>
+                <p>Один Twin может обслуживать сотни клиентов. Ваша экспертиза становится продуктом, а не услугой.</p>
+            </div>
+
+            <div class="feature-card scroll-reveal">
+                <div class="feature-icon">🔄</div>
+                <h3>Непрерывное обучение</h3>
+                <p>Twin улучшается с каждым диалогом. Логируем вопросы, калибруем ответы, Twin становится всё умнее.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== ECOSYSTEM SECTION ========== -->
+    <section id="ecosystem" class="section ecosystem">
+        <div class="ecosystem-content">
+            <h2 class="section-title">Путь к AI Twin</h2>
+            <p class="section-subtitle">Четыре этапа трансформации вашей экспертизы в систему</p>
+            
+            <div class="ecosystem-steps">
+                <div class="step scroll-reveal">
+                    <div class="step-number">1️⃣</div>
+                    <h3>Second Brain</h3>
+                    <p>Интенсив (4 дня)<br>Создаёте архитектуру своих знаний. Базис для Twin.</p>
+                </div>
+
+                <div class="step scroll-reveal">
+                    <div class="step-number">2️⃣</div>
+                    <h3>Портретирование</h3>
+                    <p>Консультация (8 часов)<br>Глубокий анализ вашего мышления через интервью и видео.</p>
+                </div>
+
+                <div class="step scroll-reveal">
+                    <div class="step-number">3️⃣</div>
+                    <h3>Twin Creation</h3>
+                    <p>Разработка (3 недели)<br>Строим вашего цифрового двойника. Калибруем точность.</p>
+                </div>
+
+                <div class="step scroll-reveal">
+                    <div class="step-number">4️⃣</div>
+                    <h3>SaaS Subscription</h3>
+                    <p>Подписка (подневная)<br>Twin работает в Telegram, Slack, вашем сайте. Вы зарабатываете.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PRICING SECTION ========== -->
+    <section id="pricing" class="section pricing">
+        <h2 class="section-title">Инвестиция в будущее</h2>
+        <p class="section-subtitle">Выберите формат, который вам подходит</p>
+
+        <div class="pricing-grid">
+            <div class="pricing-card scroll-reveal">
+                <h3>Starter</h3>
+                <div class="price">9,900<span>₽</span></div>
+                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Second Brain интенсив (4 дня)</p>
+                <ul class="pricing-features">
+                    <li>Архитектура знаний PARA</li>
+                    <li>Работа с ИИ</li>
+                    <li>Первые готовые шаблоны</li>
+                    <li>Дневная поддержка</li>
+                </ul>
+                <button class="btn-primary" style="width: 100%; margin-top: 1.5rem;">Записаться</button>
+            </div>
+
+            <div class="pricing-card popular scroll-reveal">
+                <h3>Pro</h3>
+                <div class="price">60,000<span>₽</span></div>
+                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Twin Creation Service</p>
+                <ul class="pricing-features">
+                    <li>Второй Brain + портретирование</li>
+                    <li>40 часов разработки Twin</li>
+                    <li>Первый месяц поддержки</li>
+                    <li>Калибровка точности</li>
+                    <li>Интеграция в 1 канал</li>
+                </ul>
+                <button class="btn-primary" style="width: 100%; margin-top: 1.5rem;">Заказать Twin</button>
+            </div>
+
+            <div class="pricing-card scroll-reveal">
+                <h3>Enterprise</h3>
+                <div class="price">120,000<span>₽</span></div>
+                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Full Package + Подписка</p>
+                <ul class="pricing-features">
+                    <li>Всё из Pro пакета</li>
+                    <li>60 часов разработки</li>
+                    <li>3 месяца поддержки</li>
+                    <li>Интеграция в 3+ канала</li>
+                    <li>Месячный аудит работы Twin</li>
+                </ul>
+                <button class="btn-primary" style="width: 100%; margin-top: 1.5rem;">Консультация</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CTA SECTION ========== -->
+    <section id="contact" class="cta-section">
+        <h2>Готовы запустить своего Twin?</h2>
+        <p>Окно возможности: 6-12 месяцев до того, как это станет массовым. Начните сейчас — пока рынок молодой, а вы уникальны.</p>
+        <button class="btn-primary" style="background: var(--white); color: var(--primary); border-color: var(--white);">Записаться на консультацию</button>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <p>&copy; 2026 TAGIR ThinkTech. Архитекторы цифровой экспертизы.</p>
+        <div class="footer-links">
+            <a href="#">О нас</a>
+            <a href="#">Блог</a>
+            <a href="#">Документация</a>
+            <a href="#">Контакты</a>
+            <a href="#">Telegram</a>
+        </div>
+        <p style="margin-top: 2rem; font-size: 0.9rem;">Second Brain • СОКРАТ • AI Twin — полная экосистема 2026</p>
+    </footer>
+
+    <!-- ========== SCROLL ANIMATION SCRIPT ========== -->
+    <script>
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth button interactions
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                console.log('Button clicked:', this.textContent);
+                // Добавьте здесь интеграцию с формой или аналитикой
+            });
+        });
+
+        // Mobile menu toggle (если добавить потом)
+        console.log('TAGIR ThinkTech loaded');
+    </script>
+
+</body>
+</html>
